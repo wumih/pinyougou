@@ -21,11 +21,7 @@
   visibility: hidden;
 }
 
-/* 版心 (让内容区居中) */
-.w {
-  width: 1200px;
-  margin: 0 auto;
-}
+
 
 /* 浮动工具类 */
 .fl {
@@ -70,7 +66,7 @@
 }
 .header {
   height: 105px;
-  background-color: pink;
+
   position: relative; /* <--- 新增：相对定位，作为子元素的参照 */
 }
 /* ... 内部元素保持不变，因为它们需要相对 .header 定位 ... */
@@ -84,7 +80,6 @@
 .logo {
   width: 171px;
   height: 61px;
-  background-color: skyblue;
   position: absolute;
   top: 25px;
 }
@@ -93,11 +88,17 @@
   width: 171px;
   height: 61px;
   background: url(../images/Logo.png) no-repeat;
-  font-size: 0;
+     /* font-size: 0;京东的做法*/
+    /* 淘宝的做法让文字隐藏 */
+    text-indent: -9999px;
+    overflow: hidden
 }
 .search {
   position: absolute;
-  left: 346px;
+    /* --- 居中三步曲 --- */
+  left: 50%;          /* 1. 将左边缘定位到父容器的中心 */
+  margin-left: -269px; /* 2. 向左移动自身宽度的一半 (538px / 2 = 269px) */
+  /* --- 居中三步曲 --- */
   top: 25px;
   width: 538px;
   height: 36px;
@@ -134,7 +135,10 @@ flex-grow: 1 告诉 input：“把所有剩下的空间都拿走！”。无论�
 .hotwords {
   position: absolute;
   top: 66px;
-  left: 346px;
+   left: 50%;
+    margin-left: -269px;
+    /* 这里的 -269px 确保了 .hotwords 的左边缘
+       和 .search 的左边缘处于同一个垂直线上。 */
 }
 .hotwords a {
   display: inline-block;
@@ -193,7 +197,123 @@ flex-grow: 1 告诉 input：“把所有剩下的空间都拿走！”。无论�
   height: 45px;
   background-color: #b1191a;
 }
-
+.dropdown .dt {
+    width: 100%;
+    height: 100%;
+    color: #fff;
+    text-align: center;
+    line-height: 45px;
+    font-size: 16px;
+}
+/* 1. 初始状态：让 dd 盒子保持隐藏 */
+.dropdown .dd {
+    display: none;
+    width: 210px;
+    height: 465px;
+    background-color: #c81623;
+    margin-top: 2px;
+}
+/* 2. 鼠标悬停状态：当鼠标移动到 .dropdown 区域时，让其子元素 .dd 显示出来 */
+.dropdown:hover .dd {
+    display: block; /* 核心修改：将 display 属性改为 block 或 flex */
+}
+.dropdown .dd ul li {
+    position: relative;
+    height: 31px;
+    line-height: 31px;
+    margin-left: 2px;
+    padding-left: 10px;
+}
+.dropdown .dd ul li:hover {
+   background-color: #fff;
+}
+.dropdown .dd ul li::after {
+    position: absolute;
+    top: 1px;
+    right: 10px;
+    color: #fff;
+    font-family: 'icomoon';
+    content: '\e920';
+    font-size: 14px;
+}
+.dropdown .dd ul li a {
+    font-size: 14px;
+    color: #fff;
+}
+.dropdown .dd ul li:hover a {
+    color: #c81623;
+}
 .nav .navitems {
   float: left;
+}
+
+.navitems ul li {
+    float: left;
+}
+.navitems ul li a {
+    display: block;
+    height: 45px;
+    line-height: 45px;
+    font-size: 16px;
+    padding: 0 25px;
+}
+/* 底部模块制作 */
+.footer {
+    height: 415px;
+    background-color: #f5f5f5;
+    padding-top: 30px;
+}
+.mod_service {
+    height: 80px;
+    border-bottom: 1px solid #ccc;
+}
+.mod_service ul li {
+    float: left;
+    width: 300px;
+    height: 50px;
+    padding-left: 35px;
+}
+.mod_service ul li h5 {
+    float: left;
+    width: 50px;
+    height: 50px;
+    background: url(../images/icons.png) no-repeat -252px -2px;
+    margin-right: 8px;
+}
+.service_txt h4 {
+    font-size: 14px;
+}
+.service_txt  p {
+    font-size: 12px;
+}
+.mod_help {
+    height: 185px;
+    border-bottom: 1px solid #ccc;
+    padding-top: 20px;
+    padding-left: 50px;
+}
+.mod_help dl {
+    float: left;
+    width: 200px;
+}
+.mod_help dl:last-child {
+    width: 90px;
+    text-align: center;
+}
+.mod_help dl dt {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+.mod_copyright {
+    text-align: center;
+    padding-top: 20px;
+}
+.links {
+    margin-bottom: 15px;
+}
+.links a {
+    margin: 0 3px;
+}
+.copyright {
+    line-height: 20px;
 }
