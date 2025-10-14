@@ -269,7 +269,11 @@ flex-grow: 1 告诉 input：“把所有剩下的空间都拿走！”。无论�
 }
 .mod_service ul li {
     float: left;
-    width: 300px;
+   
+        /* 修正：总宽度 1200px / 4 项 = 300px。
+       由于设置了 padding-left: 35px，所以 content 宽度必须减少。
+       300px - 35px = 265px */
+    width: 265px;
     height: 50px;
     padding-left: 35px;
 }
