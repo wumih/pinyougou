@@ -207,16 +207,16 @@ flex-grow: 1 告诉 input：“把所有剩下的空间都拿走！”。无论�
 }
 /* 1. 初始状态：让 dd 盒子保持隐藏 */
 .dropdown .dd {
-    display: none;
+    display: block;
     width: 210px;
     height: 465px;
     background-color: #c81623;
     margin-top: 2px;
 }
 /* 2. 鼠标悬停状态：当鼠标移动到 .dropdown 区域时，让其子元素 .dd 显示出来 */
-.dropdown:hover .dd {
+/* .dropdown:hover .dd {
     display: block; /* 核心修改：将 display 属性改为 block 或 flex */
-}
+
 .dropdown .dd ul li {
     position: relative;
     height: 31px;
@@ -269,7 +269,7 @@ flex-grow: 1 告诉 input：“把所有剩下的空间都拿走！”。无论�
 }
 .mod_service ul li {
     float: left;
-   
+
         /* 修正：总宽度 1200px / 4 项 = 300px。
        由于设置了 padding-left: 35px，所以 content 宽度必须减少。
        300px - 35px = 265px */
@@ -320,4 +320,9 @@ flex-grow: 1 告诉 input：“把所有剩下的空间都拿走！”。无论�
 }
 .copyright {
     line-height: 20px;
+}
+/* 添加到 CSS 文件中，通常在 base.css 或 common.css 的开头 */
+.w {
+    width: 1200px; /* 设定一个固定的宽度，例如 1200px */
+    margin: 0 auto; /* 关键：上下外边距为 0，左右外边距自动计算，实现居中 */
 }
